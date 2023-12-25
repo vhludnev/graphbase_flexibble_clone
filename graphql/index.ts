@@ -1,3 +1,33 @@
+export const getUserQuery = `
+  query GetUser($email: String!) {
+    user(by: { email: $email }) {
+      id
+      name
+      email
+      avatarUrl
+      description
+      githubUrl
+      linkedinUrl
+    }
+  }
+`
+
+export const createUserMutation = `
+	mutation CreateUser($input: UserCreateInput!) {
+		userCreate(input: $input) {
+			user {
+                id
+				name
+				email
+				avatarUrl
+				description
+				githubUrl
+				linkedinUrl
+			}
+		}
+	}
+`
+
 export const createProjectMutation = `
 	mutation CreateProject($input: ProjectCreateInput!) {
 		projectCreate(input: $input) {
@@ -12,7 +42,7 @@ export const createProjectMutation = `
 			}
 		}
 	}
-`;
+`
 
 export const updateProjectMutation = `
 	mutation UpdateProject($id: ID!, $input: ProjectUpdateInput!) {
@@ -28,7 +58,7 @@ export const updateProjectMutation = `
 			}
 		}
 	}
-`;
+`
 
 export const deleteProjectMutation = `
   mutation DeleteProject($id: ID!) {
@@ -36,23 +66,7 @@ export const deleteProjectMutation = `
       deletedId
     }
   }
-`;
-      
-export const createUserMutation = `
-	mutation CreateUser($input: UserCreateInput!) {
-		userCreate(input: $input) {
-			user {
-				name
-				email
-				avatarUrl
-				description
-				githubUrl
-				linkedinUrl
-				id
-			}
-		}
-	}
-`;
+`
 
 export const projectsQuery = `
   query getProjects($category: String, $endcursor: String) {
@@ -82,7 +96,7 @@ export const projectsQuery = `
       }
     }
   }
-`;
+`
 
 export const getProjectByIdQuery = `
   query GetProjectById($id: ID!) {
@@ -102,22 +116,8 @@ export const getProjectByIdQuery = `
       }
     }
   }
-`;
+`
 
-export const getUserQuery = `
-  query GetUser($email: String!) {
-    user(by: { email: $email }) {
-      id
-      name
-      email
-      avatarUrl
-      description
-      githubUrl
-      linkedinUrl
-    }
-  }
-`;
-      
 export const getProjectsOfUserQuery = `
   query getUserProjects($id: ID!, $last: Int = 4) {
     user(by: { id: $id }) {
@@ -139,4 +139,4 @@ export const getProjectsOfUserQuery = `
       }
     }
   }
-`;
+`
